@@ -19,21 +19,6 @@ namespace RazorPagesMovie.Pages
         }
         public async void OnGet()
         {
-            var x = _movieContext.Movie.ToList();
-
-            for (int i = 0; i < 500; i++)
-            {
-                _movieContext.Movie.Add(new Movie
-                {
-                    Genre = $"test {i}",
-                    Price = 10m,
-                    ReleaseDate = DateTime.Now,
-                    Title = "test"
-                });
-
-                await _movieContext.SaveChangesAsync();
-
-            }
 
         }
     }

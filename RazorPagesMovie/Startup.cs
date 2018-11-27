@@ -29,6 +29,8 @@ namespace RazorPagesMovie
 
             services.AddDbContext<MovieContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MovieContext")));
+
+            services.AddDbContext<WempContext>(options => options.UseMySQL("server=192.168.101.162;user id=basem.sayej;password=w0nt0k;persistsecurityinfo=True;port=3306;database=wemp;Convert Zero Datetime=True;"));
             services.AddMvc();
         }
 
