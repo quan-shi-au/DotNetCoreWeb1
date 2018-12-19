@@ -13,17 +13,21 @@ namespace RazorPagesMovie.Pages.Movies
     {
         private readonly RazorPagesMovie.Models.MovieContext _context;
         readonly WempContext _wempContext;
+        readonly SportsGearContext _sportsGearContext;
 
-        public IndexModel(RazorPagesMovie.Models.MovieContext context, WempContext wempContext)
+        public IndexModel(RazorPagesMovie.Models.MovieContext context, WempContext wempContext, SportsGearContext sportsGearContext)
         {
             _context = context;
             _wempContext = wempContext;
+            _sportsGearContext = sportsGearContext;
         }
 
         public IList<Movie> Movie { get;set; }
 
         public async Task OnGetAsync()
         {
+            var gadgets = await _sportsGearContext.Gadget.ToListAsync();
+
             var users = await _wempContext.User.ToListAsync();
 
             Movie = await _context.Movie.ToListAsync();
